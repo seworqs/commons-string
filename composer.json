@@ -1,0 +1,30 @@
+{
+    "name": "seworqs/seworqs-commons-string",
+    "description": "Base utilities when using Phing",
+    "type": "library",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-4": {
+            "Seworqs\\Commons\\String\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "S.E. Franke",
+            "email": "sven.franke@seworqs.eu"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Seworqs\\Commons\\String\\Tests\\": "tests/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
