@@ -1,6 +1,6 @@
 {
     "name": "seworqs/commons-string",
-    "description": "Base utilities when using Phing",
+    "description": "A collection of helpful string utilities for PHP developers.",
     "type": "library",
     "version": "1.0.1",
     "license": "Apache-2.0",
