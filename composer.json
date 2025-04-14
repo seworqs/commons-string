@@ -1,9 +1,13 @@
 {
     "name": "seworqs/commons-string",
-    "description": "A collection of helpful string utilities for PHP developers.",
+    "description": "A modern PHP utility library for string manipulation, including case conversion, namespace formatting, path handling, and secure random string generation.",
     "type": "library",
-    "version": "1.0.2",
     "license": "Apache-2.0",
+    "keywords": [
+        "string", "helper", "case conversion", "camelCase", "snake_case",
+        "namespace", "path", "random", "utility", "php", "seworqs"
+    ],
+    "version": "1.0.3",
     "autoload": {
         "psr-4": {
             "Seworqs\\Commons\\String\\": "src/"

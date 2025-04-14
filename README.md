@@ -1,7 +1,6 @@
 # SEworqs Commons String
 
-A collection of helpful string utilities for PHP developers.  
-Includes case conversion, path/namespace formatting, and random string generation.
+A modern PHP utility library for string manipulation, including case conversion, namespace formatting, path handling, and secure random string generation.
 
 ---
 
@@ -53,10 +52,10 @@ echo $ns->toNamespace(); // Domain\Shared\LoggerService
 
 ## Features
 
-- ✅ Transform strings to common casing styles (camelCase, PascalCase, kebab-case, etc.)
-- ✅ Support for custom delimiters and method chaining
-- ✅ Path and namespace formatting
-- ✅ Generate secure random strings with a custom character set
+- [X] Transform strings to common casing styles (camelCase, PascalCase, kebab-case, etc.)
+- [X] Support for custom delimiters and method chaining
+- [X] Path and namespace formatting
+- [X] Generate secure random strings with a custom character set
 
 > See our full [examples overview](docs/Examples.md)
 
