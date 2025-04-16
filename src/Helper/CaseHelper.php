@@ -9,7 +9,7 @@ class CaseHelper
 
     protected string $original;
     protected string $value;
-    protected array $delimiters = ['-', '_', '/', '\\'];
+    protected array $delimiters = [' ', '-', '_', '/', '\\'];
 
     ////////////////////
     // CONSTRUCTOR

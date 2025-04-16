@@ -8,7 +8,7 @@ class PathHelper
 {
     protected array $segments;
 
-    public static function fromString(string $input, array $delimiters = ['-', '_', '/', '\\']): static
+    public static function fromString(string $input, array $delimiters = [' ', '-', '_', '/', '\\']): static
     {
         $normalized = str_replace($delimiters, '/', $input);
         $segments = array_filter(explode('/', $normalized), fn($v) => $v !== '');
