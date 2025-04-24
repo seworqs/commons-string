@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Seworqs\Commons\String\Helper;
+namespace Seworqs\Commons\String\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Seworqs\Commons\String\Helper\NamespaceHelper;

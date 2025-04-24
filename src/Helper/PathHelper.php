@@ -44,6 +44,14 @@ class PathHelper
         ));
     }
 
+    public function toPascalPath(string $separator = '/'): string
+    {
+        return implode($separator, array_map(
+            fn($s) => CaseHelper::from($s)->toPascalCase()->toString(),
+            $this->segments
+        ));
+    }
+
     public function toCamelPath(string $separator = '/'): string
     {
         return implode($separator, array_map(

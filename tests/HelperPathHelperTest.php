@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Seworqs\Commons\String\Helper;
+namespace Seworqs\Commons\String\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Seworqs\Commons\String\Helper\PathHelper;
@@ -10,12 +10,26 @@ class HelperPathHelperTest extends TestCase
 {
     public function test_from_string_and_basic_path_output()
     {
-        $helper = PathHelper::fromString('App/Http/Controllers');
+        $helper = PathHelper::fromString('This/is some_strange-string');
 
-        $this->assertEquals('App/Http/Controllers', $helper->toPath());
-        $this->assertEquals('app/http/controllers', $helper->toKebabPath());
-        $this->assertEquals('app_http_controllers', $helper->toSnakePath('_'));
-        $this->assertEquals('app/http/controllers', $helper->toCamelPath());
+        $this->assertEquals('This/is/some/strange/string', $helper->toPath());
+        $this->assertEquals('this/is/some/strange/string', $helper->toKebabPath());
+        $this->assertEquals('this_is_some_strange_string', $helper->toSnakePath('_'));
+        $this->assertEquals('this/is/some/strange/string', $helper->toCamelPath());
+        $this->assertEquals('This/Is/Some/Strange/String', $helper->toPascalPath());
+        $this->assertEquals('This/Is/Some/Strange/String', $helper->toPascalPath());
+    }
+
+    public function test_from_string_with_custom_delimiters_and_basic_path_output()
+    {
+        $helper = PathHelper::fromString('This/is some_strange-string', ['/','_']);
+
+        $this->assertEquals('This/is some/strange-string', $helper->toPath());
+        $this->assertEquals('this/is-some/strange-string', $helper->toKebabPath());
+        $this->assertEquals('this_is_some_strange_string', $helper->toSnakePath('_'));
+        $this->assertEquals('this/isSome/strangeString', $helper->toCamelPath());
+        $this->assertEquals('This/IsSome/StrangeString', $helper->toPascalPath());
+        $this->assertEquals('This\IsSome\StrangeString', $helper->toPascalPath('\\'));
     }
 
     public function test_from_array_and_segment_manipulation()

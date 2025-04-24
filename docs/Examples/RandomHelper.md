@@ -1,6 +1,6 @@
 # RandomHelper
 
-The `RandomHelper` provides a simple static method to generate a random string of a given length using a configurable set of characters (the "heystack").
+The `RandomHelper` provides a simple static method to generate a random string of a given length using a configurable set of characters (the "haystack").
 
 ---
 
@@ -26,7 +26,7 @@ echo strlen($random); // 20
 
 ---
 
-## Custom heystack (character set)
+## Custom haystack (character set)
 
 ```php
 $random = RandomHelper::createRandomString(12, 'ABC123');
@@ -38,7 +38,7 @@ echo $random; // Only uses characters A, B, C, 1, 2, 3
 
 ## Avoiding confusing characters
 
-To avoid ambiguous characters (like `0` vs `O`, or `I` vs `1`), provide a clean heystack:
+To avoid ambiguous characters (like `0` vs `O`, or `I` vs `1`), provide a clean haystack:
 
 ```php
 $random = RandomHelper::createRandomString(8, 'abcdefghjkmnpqrstuvwxyz23456789');
@@ -50,9 +50,9 @@ This is useful for display codes or visual tokens where clarity matters.
 
 ---
 
-## Exception: empty heystack
+## Exception: empty haystack
 
-Passing an empty string as heystack will throw an `InvalidArgumentException`:
+Passing an empty string as haystack will throw an `InvalidArgumentException`:
 
 ```php
 RandomHelper::createRandomString(5, ''); // throws

@@ -105,8 +105,7 @@ class CaseHelper
     {
         $clone = clone $this;
 
-        $pattern = '/[' . preg_quote(implode('', $clone->delimiters), '/') . ']+/';
-        $parts = preg_split($pattern, trim($clone->value));
+        $parts = $clone->getSegments();
 
         $clone->value = implode('', array_map('ucfirst', $parts));
         return $clone;
@@ -150,19 +149,18 @@ class CaseHelper
 
     public function getSegments(): array
     {
+        $input = trim($this->value);
+        $temp = $this->generateUniqueMarker($input);
+
         $pattern = '/[' . preg_quote(implode('', $this->delimiters), '/') . ']+/';
-        return array_filter(preg_split($pattern, trim($this->value)), fn($v) => $v !== '');
+        $normalized = preg_replace($pattern, $temp, $input);
+
+        return array_filter(explode($temp, $normalized), fn($v) => $v !== '');
     }
 
     ////////////////////
     // PROTECTED METHODS
     ////////////////////
-
-    protected function splitAndCapitalize(string $segment): string
-    {
-        $parts = preg_split('/[ _-]+/', $segment);
-        return implode('', array_map('ucfirst', $parts));
-    }
 
     protected function toSeparatedCase(string $separator): static
     {
@@ -177,4 +175,18 @@ class CaseHelper
     ////////////////////
     // PRIVATE METHODS
     ////////////////////
+    private function generateUniqueMarker(string $input, int $maxTries = 10): string
+    {
+        for ($i = 0; $i < $maxTries; $i++) {
+            $temp = '__' . RandomHelper::createRandomString(12) . '__';
+            if (!str_contains($input, $temp)) {
+                return $temp;
+            }
+        }
+
+        throw new \RuntimeException('Failed to generate a unique temporary marker after ' . $maxTries . ' attempts.');
+    }
+
+
+
 }

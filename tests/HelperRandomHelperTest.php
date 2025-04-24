@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Seworqs\Commons\String\Helper;
+namespace Seworqs\Commons\String\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Seworqs\Commons\String\Helper\RandomHelper;
@@ -26,10 +26,10 @@ class HelperRandomHelperTest extends TestCase
         }
     }
 
-    public function test_random_string_with_custom_heystack()
+    public function test_random_string_with_custom_haystack()
     {
-        $heystack = 'XYZ';
-        $random = RandomHelper::createRandomString(20, $heystack);
+        $haystack = 'XYZ';
+        $random = RandomHelper::createRandomString(20, $haystack);
 
         $this->assertMatchesRegularExpression('/^[XYZ]+$/', $random);
     }
@@ -42,7 +42,7 @@ class HelperRandomHelperTest extends TestCase
         $this->assertMatchesRegularExpression('/^[abcdefghjkmnpqrstuvwxyz23456789]+$/', $random);
     }
 
-    public function test_empty_heystack_throws_exception()
+    public function test_empty_haystack_throws_exception()
     {
         $this->expectException(InvalidArgumentException::class);
         RandomHelper::createRandomString(5, '');
